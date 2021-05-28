@@ -259,7 +259,7 @@ function mousePressed()
 		xfix=false;
 		yfix=false;
 	}
-	if(game&&mouseX>740&&mouseX<760&&mouseY<60&&mouseY>30&&!gameOver)
+	else if(game&&mouseX>740&&mouseX<760&&mouseY<60&&mouseY>30&&!gameOver)
 	{
 		gMenu=true;
 
@@ -274,7 +274,31 @@ function mousePressed()
 	if(gMenu&&mouseX>480&&mouseX<530&&mouseY<330&&mouseY>300)
 	{
 		gMenu=false;
-
+		
+	}
+	if((!(game&&mouseX>685&&mouseX<715&&mouseY<60&&mouseY>30))&&(!(game&&mouseX>740&&mouseX<760&&mouseY<60&&mouseY>30&&!gameOver))
+	{
+	   if(!xfix&&!gMenu){
+			xfix=true;
+			xval=x;
+			return;
+		}
+		if(!yfix&&xfix&&!gMenu){
+			yfix=true;
+		  yval=y;
+			var d=dist(xval,yval,mx,my);
+			if(d>siz/2)
+			{arrows-=1;}
+			score=score+ceil(map(d,0,siz/2,10,0));
+			return;
+		}
+		if(xfix&&yfix&&!gMenu)
+		{
+			xfix=false;
+			dis=255;
+			changeTar();
+			return;
+		}
 	}
 }
 function keyPressed()
