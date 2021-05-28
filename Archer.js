@@ -233,17 +233,20 @@ function mousePressed()
 			close();
 
 		}
+		return;
 
 	}
 	if(credit&&mouseX>600&&mouseX<700&&mouseY<500&&mouseY>440)
  	{
  		menu=true;
  		credit=false;
+		return;
  	}
 	if(help&&mouseX>600&&mouseX<700&&mouseY<500&&mouseY>440)
 	 {
 		 menu=true;
 		 help=false;
+		 return;
 	 }
 	if(game&&mouseX>685&&mouseX<715&&mouseY<60&&mouseY>30)
 	{
@@ -258,11 +261,12 @@ function mousePressed()
 		maxinc=0;
 		xfix=false;
 		yfix=false;
+		return;
 	}
 	else if(game&&mouseX>740&&mouseX<760&&mouseY<60&&mouseY>30&&!gameOver)
 	{
 		gMenu=true;
-
+		return;
 	}
 	if(gMenu&&mouseX>350&&mouseX<420&&mouseY<330&&mouseY>300)
 	{
@@ -270,14 +274,14 @@ function mousePressed()
 		game=false;
 		x=196;y=96;
 		menu=true;
+		return;
 	}
 	if(gMenu&&mouseX>480&&mouseX<530&&mouseY<330&&mouseY>300)
 	{
 		gMenu=false;
-		
+		return;
 	}
-	if((!(game&&mouseX>685&&mouseX<715&&mouseY<60&&mouseY>30))&&(!(game&&mouseX>740&&mouseX<760&&mouseY<60&&mouseY>30&&!gameOver))
-	{
+	
 	   if(!xfix&&!gMenu){
 			xfix=true;
 			xval=x;
@@ -285,7 +289,7 @@ function mousePressed()
 		}
 		if(!yfix&&xfix&&!gMenu){
 			yfix=true;
-		  yval=y;
+		  	yval=y;
 			var d=dist(xval,yval,mx,my);
 			if(d>siz/2)
 			{arrows-=1;}
@@ -299,7 +303,6 @@ function mousePressed()
 			changeTar();
 			return;
 		}
-	}
 }
 function keyPressed()
 {
